@@ -1,0 +1,3 @@
+# Infra Homelab ArgoCD templates
+
+
