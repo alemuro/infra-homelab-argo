@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: homelab-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - appName: example
+          - appName: example-2
+  template:
+    metadata:
+      name: 'homelab-{{appName}}'
+    spec:
+      project: homelab
+      source:
+        repoURL: 'https://github.com/alemuro/infra-homelab-argo'
+        targetRevision: HEAD
+        path: applications/homelab/{{appName}}
+        helm:
+          releaseName: '{{appName}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: homelab
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
