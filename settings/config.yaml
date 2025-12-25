@@ -27,5 +27,5 @@ spec:
         directory:
           recurse: true
       destination:
-        name: in-cluster
+        name: homelab
         namespace: argocd
