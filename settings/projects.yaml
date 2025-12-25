@@ -8,7 +8,29 @@ metadata:
 spec:
   description: Project for homelab applications
   sourceRepos:
-    - 'https://github.com/alemuro/infra-homelab-argo'
+    - '*'
+  sourceNamespaces:
+    - '*'
+  destinations:
+    - namespace: default
+      server: https://kubernetes.default.svc
+    - namespace: homelab
+      server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for homelab applications
+  sourceRepos:
+    - '*'
   sourceNamespaces:
     - argocd
   destinations:

@@ -1,7 +1,0 @@
-apiVersion: v2
-name: example
-version: 0.2.0
-dependencies:
-  - name: basic-service
-    version: 0.2.0
-    repository: file://../../../helm/basic-service
