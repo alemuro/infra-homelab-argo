@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       finalizers: []
-      name: 'argocd-{{folder}}'
+        name: 'argocd-{{folder | replace "/" "-"}}'
     spec:
       project: default
       syncPolicy:
