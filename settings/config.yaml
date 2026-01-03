@@ -9,7 +9,7 @@ spec:
   - list:
       elements:
       - folder: applications/platform
-      # - folder: applications/homelab
+      - folder: applications/homelab
   template:
     metadata:
       finalizers: []
