@@ -8,9 +8,8 @@ spec:
   generators:
   - list:
       elements:
-      # - folder: config
       - folder: applications/platform
-      # - folder: manifests
+      # - folder: applications/homelab
   template:
     metadata:
       finalizers: []
@@ -20,7 +19,10 @@ spec:
       syncPolicy:
         automated:
           prune: true
-          selfHeal: false
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
       source:
         repoURL: ssh://git@github.com/alemuro/infra-homelab-argo.git
         targetRevision: HEAD
