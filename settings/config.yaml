@@ -10,6 +10,7 @@ spec:
       elements:
       - folder: applications/platform
       - folder: applications/homelab
+      - folder: settings/argocd
   template:
     metadata:
       finalizers: []
