@@ -4,6 +4,7 @@ metadata:
   name: argocd-settings
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
   - list:
       elements:
@@ -13,7 +14,7 @@ spec:
   template:
     metadata:
       finalizers: []
-      name: 'argocd-{{folder | replace "/" "-"}}'
+      name: 'argocd-{{ .folder | replace "/" "-" }}'
     spec:
       project: default
       syncPolicy:
@@ -23,7 +24,7 @@ spec:
       source:
         repoURL: ssh://git@github.com/alemuro/infra-homelab-argo.git
         targetRevision: HEAD
-        path: '{{folder}}'
+        path: '{{ .folder }}'
         directory:
           recurse: true
       destination:
