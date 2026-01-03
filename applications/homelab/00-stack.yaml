@@ -45,6 +45,8 @@ spec:
           releaseName: '{{.name}}'
           values: |
             applicationName: '{{.name}}'
+            additionalLabels:
+              k8s-app: '{{.name}}'
             deployment:
               image:
                 repository: {{.image}}
@@ -116,7 +118,7 @@ spec:
                   {{- range .allow_from }}
                   - podSelector:
                       matchLabels:
-                        app: {{ . }}
+                        k8s-app: {{ . }}
                   {{- end }}
       destination:
         name: homelab
